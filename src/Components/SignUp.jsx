@@ -13,9 +13,10 @@ import {
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import video1 from "../assets/video4.mp4";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import "./SignUp.css";
+import { Authcontext } from "../context/Authcontext";
 
 const SignUp = () => {
   const [show, setShow] = React.useState(false);
@@ -33,6 +34,23 @@ const SignUp = () => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (
+  //     state.name.length != 0 &&
+  //     state.username.length != 0 &&
+  //     state.email.length != 0 &&
+  //     state.password.length > 4
+  //   ) {
+  //     axios.post(`http://localhost:8080/users`, state).then((res) => {
+  //       console.log(res.data);
+  //       navigate("/login");
+  //     });
+  //   } else {
+  //     alert("All fields are compulsory");
+  //   }
+  // };
+  const { auth, setAuth,log,setLog } = useContext(Authcontext);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -41,14 +59,14 @@ const SignUp = () => {
       state.email.length != 0 &&
       state.password.length > 4
     ) {
-      axios.post(`http://localhost:8080/users`, state).then((res) => {
-        console.log(res.data);
-        navigate("/login");
-      });
-    } else {
+      setAuth({ ...state });
+      navigate("/login");
+    }
+    else {
       alert("All fields are compulsory");
     }
   };
+  console.log(state);
 
   return (
     <div className="mainLogin">

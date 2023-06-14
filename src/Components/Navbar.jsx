@@ -1,8 +1,15 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Flex, Box, Button } from "@chakra-ui/react";
+import { Authcontext } from "../context/Authcontext";
+import { useState, useContext } from "react";
 
 const Navbar = () => {
+  const { auth, setAuth, log, setLog } = useContext(Authcontext);
+  const Logout = () => {
+    alert("Your Account has been logged out");
+    setLog(false);
+  };
   return (
     <div>
       <Flex
@@ -12,7 +19,7 @@ const Navbar = () => {
         color={"white"}
         padding="1rem"
         bg=""
-        width={"80%"}
+        width={"90%"}
       >
         <Box display="flex" width="10%">
           <Button
@@ -25,55 +32,77 @@ const Navbar = () => {
             <h3>MBALAYANG</h3>
           </Button>
         </Box>
-        <Box margin={"auto"}>
-          <Button
-            as={Link}
-            to="/signup"
-            colorScheme="teal"
-            variant="ghost"
-            mx="0.5rem"
-            textDecoration={"none"}
-          >
-            Signup
-          </Button>
-          <Button
-            as={Link}
-            to="/login"
-            colorScheme="teal"
-            variant="ghost"
-            mx="0.5rem"
-            textDecoration={"none"}
-          >
-            Login
-          </Button>
-          <Button
-            as={Link}
-            to="/services"
-            colorScheme="teal"
-            variant="ghost"
-            mx="0.5rem"
-            textDecoration={"none"}
-          >
-            Services
-          </Button>
-          {/* <Button as={Link} to="/Details" colorScheme='teal' variant="ghost" mx="0.5rem" textDecoration={"none"}>
+
+        <Flex>
+          <Box margin={"auto"}>
+            <Button
+              as={Link}
+              to="/services"
+              colorScheme="teal"
+              variant="ghost"
+              mx="0.5rem"
+              textDecoration={"none"}
+            >
+              Services
+            </Button>
+            {/* <Button as={Link} to="/Details" colorScheme='teal' variant="ghost" mx="0.5rem" textDecoration={"none"}>
           Details
         </Button> */}
-          <Button
-            as={Link}
-            to="/blog"
-            colorScheme="teal"
-            variant="ghost"
-            mx="0.5rem"
-            textDecoration={"none"}
-          >
-            Blog
-          </Button>
+            <Button
+              as={Link}
+              to="/blog"
+              colorScheme="teal"
+              variant="ghost"
+              mx="0.5rem"
+              textDecoration={"none"}
+            >
+              Blog
+            </Button>
+          </Box>
+          {log == false ? (
+            <Box>
+              <Button
+                as={Link}
+                to="/signup"
+                colorScheme="teal"
+                variant="ghost"
+                mx="0.5rem"
+                textDecoration={"none"}
+              >
+                Signup
+              </Button>
+              <Button
+                as={Link}
+                to="/login"
+                colorScheme="teal"
+                variant="ghost"
+                mx="0.5rem"
+                textDecoration={"none"}
+              >
+                Login
+              </Button>
+            </Box>
+          ) : (
+            <Button
+              colorScheme="teal"
+              variant="ghost"
+              mx="0.5rem"
+              textDecoration={"none"}
+              onClick={Logout}
+            >
+              Logout
+            </Button>
+          )}
           {/* <Button as={Link} to="/products" colorScheme='teal' variant="ghost" mx="0.5rem" textDecoration={"none"}>
           Products
         </Button> */}
-        </Box>
-        <Box display="flex" width="10%">
+        </Flex>
+        <Flex
+          width="25%"
+          align="center"
+          justify="space-between"
+          // flex="Flex-end"
+        >
           <Button
             as={Link}
             to="#"
@@ -83,7 +112,18 @@ const Navbar = () => {
           >
             <h5>CONTACT US</h5>
           </Button>
-        </Box>
+          {log === true ? (
+            <Button
+              as={Link}
+              to="#"
+              variant="outline"
+              mx="0.2rem"
+              colorScheme="white"
+            >
+              <h5>{auth.username}</h5>
+            </Button>
+          ) : null}
+        </Flex>
       </Flex>
     </div>
   );
