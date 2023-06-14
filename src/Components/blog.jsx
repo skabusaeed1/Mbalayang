@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Heading, Text, Image, SimpleGrid, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  Image,
+  SimpleGrid,
+  Button,
+} from "@chakra-ui/react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SearchBox from "./SearchBox";
@@ -88,22 +95,23 @@ const BlogPage = () => {
     <Box
       backgroundImage="url('https://images.pexels.com/photos/4476397/pexels-photo-4476397.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"
       backgroundSize="cover"
-      backgroundPosition="top"
-      maxHeight="115vh"
-      maxWidth="90%"
+      backgroundPosition="center"
+      maxHeight="90vh"
+      maxWidth={"90%"}
       margin="auto"
       borderBottomRadius="30%"
-      display="flex"
+      display={"flex"}
       flexDirection="column"
     >
       <Navbar />
-      <Heading size={"2xl"} marginTop={"40"} marginBottom={"-60"} color="white">
-        Destinations
-      </Heading>
-      <Heading size={"md"} marginTop={"40"} marginBottom={"-60"} color="white">
-        {" "}
-        Amazing Destinations in the World
-      </Heading>
+      <Box marginTop={"30px"}>
+        <Heading size={"2xl"} color="white">
+          Destinations
+        </Heading>
+        <Heading size={"lg"} color="white" marginTop={"15px"}>
+          Amazing Destinations in the World
+        </Heading>
+      </Box>
       <SearchBox />
       <Gridblog />
 

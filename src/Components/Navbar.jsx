@@ -14,6 +14,7 @@ const Navbar = () => {
     <div>
       <Flex
         marginLeft="10%"
+        // margin={"auto"}
         align="center"
         justify="space-between"
         color={"white"}
@@ -37,14 +38,15 @@ const Navbar = () => {
           <Box margin={"auto"}>
             <Button
               as={Link}
-              to="/services"
+              to="/"
               colorScheme="teal"
               variant="ghost"
               mx="0.5rem"
               textDecoration={"none"}
             >
-              Services
+              Home
             </Button>
+
             {/* <Button as={Link} to="/Details" colorScheme='teal' variant="ghost" mx="0.5rem" textDecoration={"none"}>
           Details
         </Button> */}
@@ -57,6 +59,16 @@ const Navbar = () => {
               textDecoration={"none"}
             >
               Blog
+            </Button>
+            <Button
+              as={Link}
+              to="/services"
+              colorScheme="teal"
+              variant="ghost"
+              mx="0.5rem"
+              textDecoration={"none"}
+            >
+              Services
             </Button>
           </Box>
           {log == false ? (

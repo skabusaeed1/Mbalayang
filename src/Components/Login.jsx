@@ -9,11 +9,11 @@ import {
   Heading,
   Input,
 } from "@chakra-ui/react";
-import { useState,useContext } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Style from "./Login.css";
 import video1 from "../assets/video4.mp4";
-import {Authcontext} from "../context/Authcontext"
+import { Authcontext } from "../context/Authcontext";
 
 const Login = () => {
   const [show, setShow] = React.useState(false);
@@ -45,21 +45,20 @@ const Login = () => {
   //     }
   //   });
   // };
-  const { auth, setAuth,log,setLog } = useContext(Authcontext);
+  const { auth, setAuth, log, setLog } = useContext(Authcontext);
   const handelSubmit = (e) => {
     e.preventDefault();
-  
-      if(auth.email===state.email && auth.password===state.password){
-        alert("Login successfully");
-        setLog(true);
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
-      }
-      else {
-        alert("Please check your email or Password");
-      }
+
+    if (auth.email === state.email && auth.password === state.password) {
+      alert("Login successfully");
+      setLog(true);
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+    } else {
+      alert("Please check your email or Password");
     }
+  };
   console.log(auth);
   return (
     <div className="mainLogin">
@@ -87,7 +86,7 @@ const Login = () => {
                 name="password"
                 pr="4.5rem"
                 type={show ? "text" : "password"}
-                placeholder="6+characters"
+                placeholder="4+characters"
                 onChange={handleChange}
               />
               <InputRightElement width="4.5rem">
